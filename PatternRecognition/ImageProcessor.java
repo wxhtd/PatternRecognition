@@ -23,9 +23,22 @@ public class ImageProcessor {
         System.out.println("Image processed");
     }
 
+    public void displayImage() {
+        int rows = grayScalePixels.length;
+        int cols = grayScalePixels[0].length;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(grayScalePixels[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
     public void PatternCongnition() {
         System.out.println("Start Pattern Congnition");
-        var analyzer = new ImageAnalyzer(grayScalePixels);
+        var analyzer = new ImageAnalyzer(grayScalePixels,debug);
         analyzer.ApplyGaussianFilter();
         var histogram = analyzer.GetHistogram();
         var threshold = analyzer.GetOtsuThreshold(histogram);
@@ -37,8 +50,8 @@ public class ImageProcessor {
 
     public int[][] ConvertImageToGrayScaleArray(String imageFilePath) {
         try {
-            File file = new File(imageFilePath);
-            BufferedImage image = ImageIO.read(file);
+            var file = new File(imageFilePath);
+            var image = ImageIO.read(file);
 
             int width = image.getWidth();
             int height = image.getHeight();
@@ -74,19 +87,6 @@ public class ImageProcessor {
 
     // This is a test function, generate image from a 2D grayscale array
     public void ConvertGrayScaleToImage(int[][] grayscaleArray, String outputPath) {
-        // int[][] grayscaleArray = {
-        // { 1, 3, 5, 7, 9, 3, 4, 4, 5, 6 },
-        // { 1, 20, 25, 24, 3, 5, 6, 4, 2, 4 },
-        // { 1, 22, 35, 24, 3, 5, 6, 4, 5, 7 },
-        // { 1, 20, 28, 34, 2, 5, 6, 4, 8, 9 },
-        // { 1, 3, 5, 7, 9, 3, 4, 4, 5, 6 },
-        // { 1, 3, 5, 7, 9, 3, 67, 4, 5, 6 },
-        // { 1, 3, 5, 7, 9, 78, 54, 94, 5, 6 },
-        // { 1, 3, 5, 7, 9, 99, 98, 54, 5, 6 },
-        // { 1, 3, 5, 7, 9, 3, 64, 4, 5, 6 },
-        // { 1, 3, 5, 7, 9, 3, 4, 4, 5, 6 },
-        // { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-        // };
         // Get the width and height of the grayscale array
         int rows = grayscaleArray.length;
         int cols = grayscaleArray[0].length;
