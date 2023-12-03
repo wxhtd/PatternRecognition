@@ -1,0 +1,14 @@
+This is a project demonstrating image processing process.
+
+In this process, the following procedures were performed:
+1. Convert a image file into grayscale 2-dimensional array
+2. Apply Gaussian Filter to remove noise
+3. Generate histogram from noise filtered grayscale pixels
+4. Calculate threshold for object detection
+5. Connectivity analysis to label objects
+6. Object recognition for circles and squares
+
+To execute the program, please download the .java files, compile and execute TestImage.class.
+
+For details, please refer to the following slides:
+https://docs.google.com/presentation/d/e/2PACX-1vTDfYJkfhSIom3VJ0Q2Vh1afJTiPLl4RRU76d1UfLtCzHT9KRasm3RXShmn4vRxjaVeR5t9olMlAHJ2/pub?start=false&loop=false&delayms=3000
